@@ -22,6 +22,11 @@ Follow instruction in https://angular.io/guide/setup-local
 Follow instruction in https://dotnet.microsoft.com/en-us/download/dotnet/5.
 ```
 
+- EF Core Tool (Optional if you run with Visual Studio)
+```
+Follow instruction in https://docs.microsoft.com/en-us/ef/core/cli/dotnet
+```
+
 - SQL Server
 ```
 Follow instruction in https://www.microsoft.com/en-gb/sql-server/sql-server-downloads
@@ -39,6 +44,8 @@ npm install
 cd .\server\
 
 dotnet build
+
+dotnet ef database update --project .\GarageAPI\GarageAPI.csproj
 ```
 
 ## Run
@@ -53,6 +60,20 @@ ng serve -o
 cd .\server\
 
 dotnet run --project .\GarageAPI\GarageAPI.csproj
+```
+
+## Test
+- Angular (Not implemented yet)
+```
+cd .\client\
+
+ng test
+```
+- .NET
+```
+cd .\server\
+
+dotnet test .\GarageAPI.Test\GarageAPI.Test.csproj
 ```
 
 ## Note
