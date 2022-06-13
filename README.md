@@ -57,3 +57,4 @@ dotnet run --project .\GarageAPI\GarageAPI.csproj
 
 ## Note
 - If you do not use dotnet CLI, the API Url may be different with the config in client side. Please update baseApiUrl in environment.ts file with the running server api if it happens.
+- Use Guideline in docs folder to see the features and the expected error messages.

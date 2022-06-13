@@ -3,7 +3,7 @@ import { GARAGE_FEATURE_KEY, reducer as garageReducer } from '@modules/garage/+s
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { GarageRoutingModule } from '@modules/garage/garage-routing.module';
 import { ParkingLevelComponent } from '@modules/garage/components/parking-level/parking-level.component';
 import { ParkingSpaceComponent } from '@modules/garage/components/parking-level/parking-space/parking-space.component';
