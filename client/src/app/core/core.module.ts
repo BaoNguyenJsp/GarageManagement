@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ErrorInterceptor } from '@app/core/interceptors/errot.interceptor';
-import { NotificationService } from '@app/core/services/notification.service';
+import { ErrorInterceptor } from '@core/interceptors/errot.interceptor';
+import { NotificationService } from '@core/services/notification.service';
 
 
 @NgModule({

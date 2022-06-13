@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { NotificationMessage, NotificationType } from '@app/core/messages/notification.message';
+import { NotificationMessage, NotificationType } from '@core/messages/notification.message';
 
 @Injectable({
   providedIn: 'root'

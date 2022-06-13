@@ -4,7 +4,7 @@ import { GarageFacade } from '@modules/garage/+state/garage.facade';
 import { GarageState } from '@modules/garage/+state/garage.reducer';
 import { Store } from '@ngrx/store';
 import * as garageActions from "@modules/garage/+state/garage.actions";
-import { VehicalType } from '@app/modules/garage/enums/vehical-type';
+import { VehicalType } from '@modules/garage/enums/vehical-type';
 
 @Component({
   selector: 'app-parking-manager',
