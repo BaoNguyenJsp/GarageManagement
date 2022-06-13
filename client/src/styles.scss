@@ -27,3 +27,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+app-header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+app-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 9999;
+}
