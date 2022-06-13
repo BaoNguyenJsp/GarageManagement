@@ -1,0 +1,35 @@
+<div class="card mb-3">
+  <div class="card-body parking-section">
+    <h5 class="card-title mb-3">Parking</h5>
+    <form [formGroup]="parkingForm">
+      <div class="mb-3">
+        <label for="card-id" class="form-label">Card Id <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="card-id" formControlName="cardId" placeholder="Card Id">
+      </div>
+      <div class="mb-3">
+        <label for="license-plate" class="form-label">License Plate <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="license-plate" formControlName="licensePlate"
+          placeholder="License Plate">
+      </div>
+      <div class="mb-3">
+        <label for="vehical-type" class="form-label">Vehical Type <span class="text-danger">*</span></label>
+        <app-constant-dropdown [enum]="vehicalType" (valueChanges)="updateVehicalType($event)"></app-constant-dropdown>
+      </div>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary" (click)="park()" [disabled]="parkingForm.invalid">Park</button>
+      </div>
+    </form>
+  </div>
+  <div class="card-body leaving-section">
+    <h5 class="card-title mb-3">Leaving</h5>
+    <form [formGroup]="leavingForm">
+      <div class="mb-3">
+        <label for="card-id" class="form-label">Card Id <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="card-id" formControlName="cardId" placeholder="Card Id">
+      </div>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-warning" (click)="leave()" [disabled]="leavingForm.invalid">Leave</button>
+      </div>
+    </form>
+  </div>
+</div>

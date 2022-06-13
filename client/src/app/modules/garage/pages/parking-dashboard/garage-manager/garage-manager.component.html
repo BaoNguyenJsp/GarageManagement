@@ -1,0 +1,41 @@
+<div class="card mb-3">
+  <div class="card-body manager-section">
+    <h5 class="card-title mb-3">Management</h5>
+    <form [formGroup]="manageForm">
+      <div class="mb-3">
+        <label for="code" class="form-label">Level Code <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" id="code" formControlName="code" placeholder="Level code">
+      </div>
+      <div class="mb-3">
+        <label for="car-spaces" class="form-label">Car Spaces <span class="text-danger">*</span></label>
+        <input type="number" class="form-control" id="car-spaces" formControlName="carSpaces"
+          placeholder="Your expected car spaces">
+      </div>
+      <div class="mb-3">
+        <label for="motorbike-spaces" class="form-label">Motorbike Spaces <span class="text-danger">*</span></label>
+        <input type="number" class="form-control" id="motorbike-spaces" formControlName="motorbikeSpaces"
+          placeholder="Your expected motorbike spaces">
+      </div>
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary" (click)="create()">Create</button>
+        <button type="button" class="btn btn-warning" (click)="update()"
+          [disabled]="!selectedParkingLevel">Update</button>
+        <button type="button" class="btn btn-danger" (click)="delete()"
+          [disabled]="!selectedParkingLevel">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Levels</h5>
+    <div class="overflow-auto all-parking-levels">
+      <div class="card px-3 py-1" *ngFor="let item of (parkingLevels$ | async); index as i" (click)="toggle(item)"
+        [ngClass]="{'bg-success text-light': selectedParkingLevel?.id == item.id, 'mt-3': i !== 0}">
+        <div class="text-center text-decoration-underline">{{item.code}}</div>
+        <div>Car Spaces: {{item.availableCarSpaces}}</div>
+        <div>Motorbike Spaces: {{item.availableMotorbikeSpaces}}</div>
+      </div>
+    </div>
+  </div>
+</div>

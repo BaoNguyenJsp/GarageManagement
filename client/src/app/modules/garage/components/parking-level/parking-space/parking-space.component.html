@@ -1,0 +1,6 @@
+<div class="card">
+  <div class="card-body" [ngClass]="{'bg-warning': parkingSpace.isUsed}">
+    <ng-container *ngIf="parkingSpace.vehicalType == vehicalType.Car">Car</ng-container>
+    <ng-container *ngIf="parkingSpace.vehicalType == vehicalType.Motorbike">Motorbike</ng-container>
+  </div>
+</div>
