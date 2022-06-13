@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-3 flex-grow-1">
+    <app-garage-manager (parkingLevelSelected)="toggle($event)"></app-garage-manager>
+  </div>
+  <div class="col-6">
+    <div *ngIf="(parkingLevels$ | async)" class="card mb-3">
+      <div class="card-body">
+        <div>Available Car Spaces: {{ getAvailableSpacesForCars$ | async }}</div>
+        <div>Available Motorbike Spaces: {{ getAvailableSpacesForMotorbikes$ | async }}</div>
+      </div>
+    </div>
+    <h2>Garage</h2>
+    <ng-container *ngIf="selectedParkingLevel; else emptyParkingLevel">
+      <ng-container *ngFor="let item of (parkingLevels$ | async)">
+        <app-parking-level *ngIf="item.id == selectedParkingLevel?.id" [parkingLevel]="item"></app-parking-level>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #emptyParkingLevel>
+      <div class="card">
+        <div class="card-body">
+          No parking level is selected.
+        </div>
+      </div>
+    </ng-template>
+  </div>
+  <div class="col-3">
+    <app-parking-manager></app-parking-manager>
+  </div>
+</div>
