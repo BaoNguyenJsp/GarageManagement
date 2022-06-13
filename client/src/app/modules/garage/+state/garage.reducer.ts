@@ -25,43 +25,43 @@ export const initialState: GarageState = garageAdapter.getInitialState({
 
 const garageReducer = createReducer(
   initialState,
-  on(garageActions.parkingLevelsRetrieved, (state, { parkingLevels: parking_levels }) => {
-    var garageState = garageAdapter.addMany(parking_levels, state);
-    var parking_level_state = Object.keys(garageState.entities).flatMap(parking_level => garageState.entities[parking_level] as ParkingLevel);
+  on(garageActions.parkingLevelsRetrieved, (state, { parkingLevels }) => {
+    var garageState = garageAdapter.addMany(parkingLevels, state);
+    var parkingLevelState = Object.keys(garageState.entities).flatMap(parkingLevel => garageState.entities[parkingLevel] as ParkingLevel);
 
     return {
       ...garageState,
-      availableSpacesForCars: parking_level_state.reduce((c, p) => c + p.availableCarSpaces, 0),
-      availableSpacesforMotobikes: parking_level_state.reduce((c, p) => c + p.availableMotorbikeSpaces, 0)
+      availableSpacesForCars: parkingLevelState.reduce((c, p) => c + p.availableCarSpaces, 0),
+      availableSpacesforMotobikes: parkingLevelState.reduce((c, p) => c + p.availableMotorbikeSpaces, 0)
     }
   }),
-  on(garageActions.parkingLevelCreated, (state, { parkingLevel: parking_level }) => {
-    var garageState = garageAdapter.addOne(parking_level, state);
+  on(garageActions.parkingLevelCreated, (state, { parkingLevel }) => {
+    var garageState = garageAdapter.addOne(parkingLevel, state);
 
     return {
       ...garageState,
-      availableSpacesForCars: state.availableSpacesForCars + parking_level.availableCarSpaces,
-      availableSpacesforMotobikes: state.availableSpacesforMotobikes + parking_level.availableMotorbikeSpaces
+      availableSpacesForCars: state.availableSpacesForCars + parkingLevel.availableCarSpaces,
+      availableSpacesforMotobikes: state.availableSpacesforMotobikes + parkingLevel.availableMotorbikeSpaces
     };
   }),
-  on(garageActions.parkingLevelUpdated, (state, { parkingLevel: parking_level }) => {
-    var garageState = garageAdapter.updateOne(parking_level, state);
-    var current_parking_spaces = Object.keys(garageState.entities).flatMap(parking_level => garageState.entities[parking_level] as ParkingLevel);
+  on(garageActions.parkingLevelUpdated, (state, { parkingLevel }) => {
+    var garageState = garageAdapter.updateOne(parkingLevel, state);
+    var currentParkingSpaces = Object.keys(garageState.entities).flatMap(parkingLevel => garageState.entities[parkingLevel] as ParkingLevel);
 
     return {
       ...garageState,
-      availableSpacesForCars: current_parking_spaces.reduce((c, p) => c + p.availableCarSpaces, 0),
-      availableSpacesforMotobikes: current_parking_spaces.reduce((c, p) => c + p.availableMotorbikeSpaces, 0)
+      availableSpacesForCars: currentParkingSpaces.reduce((c, p) => c + p.availableCarSpaces, 0),
+      availableSpacesforMotobikes: currentParkingSpaces.reduce((c, p) => c + p.availableMotorbikeSpaces, 0)
     };
   }),
-  on(garageActions.parkingLevelDeleted, (state, { parkingLevelId: parking_level_id }) => {
-    var garageState = garageAdapter.removeOne(parking_level_id, state);
-    var remaining_parking_spaces = Object.keys(garageState.entities).flatMap(parking_level => garageState.entities[parking_level] as ParkingLevel);
+  on(garageActions.parkingLevelDeleted, (state, { parkingLevelId }) => {
+    var garageState = garageAdapter.removeOne(parkingLevelId, state);
+    var remainingParkingSpaces = Object.keys(garageState.entities).flatMap(parkingLevel => garageState.entities[parkingLevel] as ParkingLevel);
 
     return {
       ...garageState,
-      availableSpacesForCars: remaining_parking_spaces.reduce((c, p) => c + p.availableCarSpaces, 0),
-      availableSpacesforMotobikes: remaining_parking_spaces.reduce((c, p) => c + p.availableMotorbikeSpaces, 0)
+      availableSpacesForCars: remainingParkingSpaces.reduce((c, p) => c + p.availableCarSpaces, 0),
+      availableSpacesforMotobikes: remainingParkingSpaces.reduce((c, p) => c + p.availableMotorbikeSpaces, 0)
     };
   }),
 
