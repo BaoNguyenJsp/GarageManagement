@@ -13,7 +13,7 @@ export class GarageEffects {
   getParkingLevels$ = createEffect(() => this.actions$.pipe(
     ofType(garageActions.getParkingLevels),
     mergeMap(_ => this.garageService.getParkingLevels().pipe(
-      map(parking_levels => garageActions.parkingLevelsRetrieved({ parkingLevels: parking_levels })),
+      map(parkingLevels => garageActions.parkingLevelsRetrieved({ parkingLevels })),
       catchError(_ => EMPTY)
     ))
   ));
@@ -21,7 +21,7 @@ export class GarageEffects {
   createParkingLevels$ = createEffect(() => this.actions$.pipe(
     ofType(garageActions.createParkingLevel),
     switchMap(_ => this.garageService.createParkingLevel(_.parkingLevel).pipe(
-      map(parking_level => garageActions.parkingLevelCreated({ parkingLevel: parking_level })),
+      map(parkingLevel => garageActions.parkingLevelCreated({ parkingLevel })),
       catchError(_ => EMPTY)
     ))
   ));
@@ -29,11 +29,11 @@ export class GarageEffects {
   updateParkingLevels$ = createEffect(() => this.actions$.pipe(
     ofType(garageActions.updateParkingLevel),
     switchMap(_ => this.garageService.updateParkingLevel(_.id, _.parkingLevel).pipe(
-      map(parking_level => {
+      map(parkingLevel => {
         const updatedParkingLevel: Update<ParkingLevel> = {
-          id: parking_level.id,
+          id: parkingLevel.id,
           changes: {
-            ...parking_level
+            ...parkingLevel
           }
         }
         return garageActions.parkingLevelUpdated({ parkingLevel: updatedParkingLevel })

@@ -15,12 +15,12 @@ export class GarageService {
     return this.http.get<ParkingLevel[]>(`${this.baseUrl}`);
   }
 
-  createParkingLevel(parking_level: CreateParkingLevel): Observable<ParkingLevel> {
-    return this.http.post<ParkingLevel>(`${this.baseUrl}`, parking_level);
+  createParkingLevel(parkingLevel: CreateParkingLevel): Observable<ParkingLevel> {
+    return this.http.post<ParkingLevel>(`${this.baseUrl}`, parkingLevel);
   }
 
-  updateParkingLevel(id: string, parking_level: UpdateParkingLevel): Observable<ParkingLevel> {
-    return this.http.put<ParkingLevel>(`${this.baseUrl}/${id}`, parking_level);
+  updateParkingLevel(id: string, parkingLevel: UpdateParkingLevel): Observable<ParkingLevel> {
+    return this.http.put<ParkingLevel>(`${this.baseUrl}/${id}`, parkingLevel);
   }
 
   deleteParkingLevel(id: string): Observable<string> {
